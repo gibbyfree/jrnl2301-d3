@@ -1,4 +1,13 @@
-{
+// Code largely pulled and adapted from: https://www.d3-graph-gallery.com/graph/treemap_json.html
+
+// set dimensions of graph
+const margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = 445 - margin.left - margin.right,
+  height = 445 - margin.top - margin.bottom;
+
+// Data is being stored in-file to simplify submission, allowing professor to view the project locally
+// Sorry it's so big and terrible.
+const groceryData = {
     "children": [
         {
             "name": "Dark green vegetables",
@@ -236,3 +245,38 @@
     ],
     "name": "groceries"
 }
+
+let grocerySvg = d3.select("#grocery-breakdown")
+                   .append("svg")
+                   .attr("width", width + margin.left + margin.right)
+                   .attr("height", height + margin.top + margin.bottom)
+                   .append("g")
+                   .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+
+
+let root = d3.hierarchy(groceryData).sum(function(d){return d.value})
+
+d3.treemap()
+  .size([width, height])
+  .padding(2)
+  (root)
+
+grocerySvg.selectAll("rect")
+   .data(root.leaves())
+   .enter()
+   .append("rect")
+   .attr('x', function(d) {return d.x0})
+   .attr('y', function(d) {return d.y0})
+   .attr('width', function(d) {return d.x1 - d.x0})
+   .attr('height', function(d) {return d.y1 - d.y0})
+   .style('stroke', 'black')
+
+grocerySvg.selectAll("text")
+   .data(root.leaves())
+   .enter()
+   .append("text")
+   .attr("x", function(d){ return d.x0+5})    
+   .attr("y", function(d){ return d.y0+20})    
+   .text(function(d){ return d.data.product })
+   .attr("font-size", "8px")
+   .attr("fill", "white")
