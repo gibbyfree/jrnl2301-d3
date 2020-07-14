@@ -15,7 +15,7 @@ let budgetSvg = d3.select("#weekly-budget").append("svg")
             .attr("height", budgetHeight)
 
 let budgetNode = budgetSvg.selectAll("g")
-              .data(budgetData.node)
+                          .data(budgetData.node)
     
 let budgetNodeEnter = budgetNode.enter()
                     .append("g")
@@ -23,15 +23,11 @@ let budgetNodeEnter = budgetNode.enter()
                         return "translate(" + d.cx + "," + d.cy +")"
                     })
 
-let ellipse = budgetNodeEnter.append("ellipse")
-                        .attr("rx", function (d) {
-                            return d.rx
-                        })
-                        .attr("ry", function (d) {
-                            return d.ry
-                        })
-                        .style("stroke", "black")
-                        .style("fill", "springgreen")
+budgetNodeEnter.append("ellipse")
+                .attr("rx", function (d) {return d.rx})
+                .attr("ry", function (d) {return d.ry})
+                .style("stroke", "black")
+                .style("fill", "springgreen")
 
 // Add label above node
 budgetNodeEnter.append("text")
