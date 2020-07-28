@@ -1,0 +1,35 @@
+h1, h2, h3 {
+    font-family: "Georgia", Times, serif;
+}
+p {
+    font-family: "Arial", Arial, Helvetica, sans-serif
+}
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#header {
+    text-align: center;
+    line-height: 1;
+}
+#body-text {
+    text-indent: 50px;
+}
+.note {
+    color: blue;
+}
+img {
+    display: block;
+    margin: auto;
+}
+#column1 {
+    float: left;
+}
+#column2 { 
+    float: right;
+}
+#grocery-nutrient-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}

@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Visual Journalism Viz</title>
+    <title>Hungry for Change</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-    <p>Cost Comparison</p>
     <div id="cost-comparison"></div>
     <script src="src/cost-comparison.js"></script>
-    <p>Weekly Budget</p>
     <div id="weekly-budget"></div>
     <script src="src/weekly-budget.js"></script>
-    <p>Grocery Breakdown</p>
-    <div id="grocery-breakdown"></div>
-    <script src="src/grocery-breakdown.js"></script>
-    <p>Nutrient Breakdown</p>
-    <div class="nutrient-breakdown">
-        <p>Calories</p>
-        <div id="calorie-donut"></div>
-        <p>Carbohydrates</p>
-        <div id="carb-donut"></div>
-        <p>Fat</p>
-        <div id="fat-donut"></div>
-        <p>Dietary Fiber</p>
-        <div id="fiber-donut"></div>
-        <p>Protein</p>
-        <div id="protein-donut"></div>
+    <div id="grocery-nutrient-container">
+        <div id="grocery container-child">
+            <div id="grocery-breakdown"></div>
+        </div>
+        <script src="src/grocery-breakdown.js"></script>
+        <div id="nutrient container-child">
+            <div id="calorie-donut"></div>
+            <div id="carb-donut"></div>
+            <div id="fat-donut"></div>
+            <div id="fiber-donut"></div>
+            <div id="protein-donut"></div>
+        </div>
+        <script src="src/nutrient-breakdown.js"></script>
     </div>
-    <script src="src/nutrient-breakdown.js"></script>
+    
 
 </body>
 </html>
