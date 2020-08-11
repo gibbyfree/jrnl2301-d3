@@ -246,6 +246,203 @@ const groceryData = {
     "name": "groceries"
 }
 
+const secondGroceryData = {
+    "children": [
+        {
+            "name": "Dark green veg.",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Organic Broccoli Florets, 16 oz, (Frozen)",
+                    "group": "A",
+                    "value": 0.73,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Red/orange veg.",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Organic Diced Tomatoes, No Salt Added, 14.5 oz",
+                    "group": "C",
+                    "value": 4.46,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Legumes",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Black Beans, No Salt Added, 15 oz",
+                    "group": "B",
+                    "value": 0.79,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Starchy veg.",
+            "children": [
+                {
+                    "name": "Goya Foods Green Pigeon Peas / Gandules Verdes 15 oz",
+                    "group": "C",
+                    "value": 3.98,
+                    "colname": "level3"
+                },
+                {
+                    "name": "365 Everyday Value, Organic Sweet Yellow Corn, 16 oz, (Frozen)",
+                    "group": "B",
+                    "value": 0.98,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Other veg.",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Organic Cut Green Beans, No Salt Added, 14.5 oz",
+                    "group": "A",
+                    "value": 2.98,
+                    "colname": "level3"
+                },
+                {
+                    "name": "Organic Yellow Onion",
+                    "group": "B",
+                    "value": 0.21,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Fruits",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Refrigerated Organic 100% Orange - Strawberry - Banana Juice, Calcium & Vitamin D (From Concentrate), 59 Fl Oz",
+                    "group": "C",
+                    "value": 3.99,
+                    "colname": "level3"
+                },
+                {
+                    "name": "365 Everyday Value, Organic Pineapple Orange Banana Juice, 59 fl oz",
+                    "group": "C",
+                    "value": 3.99,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Whole grain",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Organic Instant Oatmeal, Maple & Brown Sugar, 11.3oz, 8 ct",
+                    "group": "B",
+                    "value": 3.69,
+                    "colname": "level3"
+                },
+                {
+                    "name": "365 Everyday Value, Organic Ancient Grains Sandwich Bread, 20 oz",
+                    "group": "A",
+                    "value": 1.85,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Refined grain",
+            "children": [
+                {
+                    "name": "Tastybite, Rice Basmati Organic, 8.8 Ounce",
+                    "group": "C",
+                    "value": 5.38,
+                    "colname": "level3"
+                },
+                {
+                    "name": "Whole Foods Market, Organic Farfalle, 16 oz",
+                    "group": "B", 
+                    "value": 1.62,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Dairy",
+            "children": [
+                {
+                    "name": "365 by Whole Foods Market, Cheese Shreds, Mild Cheddar, 16 Ounce",
+                    "group": "A",
+                    "value": 5.99,
+                    "colname": "level3"
+                },
+                {
+                    "name": "365 Everyday Value, Mint Chocolate Chip Ice Cream, 48 oz (Frozen)",
+                    "group": "A",
+                    "value": 5.99,
+                    "colname": "level3"
+                },
+                {
+                    "name": "365 by Whole Foods Market, Grade A Milk, Reduced Fat, 64 Fl Oz",
+                    "group": "C",
+                    "value": 1.92,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Seafood",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Wild Albacore Tuna in Water, No Salt Added, 5 oz",
+                    "group": "B",
+                    "value": 3.66,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Meats, poultry, eggs",
+            "children": [
+                {
+                    "name": "Bell & Evans, Frozen Chicken Nuggets (Raised without Antibiotics), 12 oz",
+                    "group": "C",
+                    "value": 6.99,
+                    "colname": "level3"
+                },
+                {
+                    "name": "Earrth's Best, Meatball Baked Beef Mini, 0.87 lb",
+                    "group": "D",
+                    "value": 7.99,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Nuts, seeds, soy products",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Creamy Peanut Butter, 16 oz",
+                    "group": "D",
+                    "value": 0.45,
+                    "colname": "level3"
+                }
+            ]
+        },
+        {
+            "name": "Oil",
+            "children": [
+                {
+                    "name": "365 Everyday Value, Extra Virgin Olive Oil, Italian, 33.8 fl oz",
+                    "group": "D",
+                    "value": 0.27,
+                    "colname": "level3"
+                }
+            ]
+        }
+    ],
+    "name": "secondGroceries"
+}
+
 // Another ugly consequence of all data existing in-file. In an ideal world, this is a .csv. 
 const groceryMap = new Map([
     ["365 Everyday Value, Organic Baby Spinach, 5 oz", 
@@ -306,6 +503,32 @@ const groceryMap = new Map([
     ["365 Everyday Value, Extra Virgin Olive Oil, Italian, 33.8 fl oz", {label: "$0.27", quantity: "27 grams",
     explanation: "Bottle contains 1000g. 27 / 1000 = .027. $9.99 * .027 = 0.26973.\nRounded up."}]
 ]);
+
+const secondGroceryMap = new Map([
+    ["365 Everyday Value, Organic Broccoli Florets, 16 oz, (Frozen)", {"label": "$0.73", "quantity": "1.5 cups", 
+    "explanation": "One cup is 97g (https://fdc.nal.usda.gov/fdc-app.html#/food-details/787471/nutrients) so 1.5 = 145g. Bag contains 454g. This is 0.3193 of the package. 0.3193 * 2.29 = 0.731"}],
+    ["365 Everyday Value, Organic Diced Tomatoes, No Salt Added, 14.5 oz", {"label": "$4.46", "quantity": "5.5 cups",
+    "explanation": "One cup is 240g (https://fdc.nal.usda.gov/fdc-app.html#/food-details/787697/nutrients) so 5.5 = 1320g. Can contains 411g. These are 3.2116 cans, rounded up to 3.2117. 3.2117 = 4.46"}],
+    ["365 Everyday Value, Black Beans, No Salt Added, 15 oz", {"label": "$0.79", "quantity": "1.5 cups", "explanation": "One can contains 1.5 cups."}],
+    ["Goya Foods Green Pigeon Peas / Gandules Verdes 15 oz", {"label": "$3.98", "quantity": "3.5 cups", "explanation": "One can contains 1.75 cups."}],
+    ["365 Everyday Value, Organic Sweet Yellow Corn, 16 oz, (Frozen)", {"label": "$0.98", "quantity": "1.5 cups", "explanation": "Bag contains about 3.5 cups. 1.5 / 3.5 = 0.429 of the package. $2.29 * 0.429 = 0.982."}],
+    ["365 Everyday Value, Organic Cut Green Beans, No Salt Added, 14.5 oz", {"label": "$2.98", "quantity": "3.5 cups", "explanation": "One can contains 1.75 cups."}],
+    ["Organic Yellow Onion", {"label": "$0.21", "quantity": ".5 cup", "explanation": "1 cup = 160g (https://fdc.nal.usda.gov/fdc-app.html#/food-details/787804/portions) so .5 cup = 80g. 80g is .18 lbs, $1.19 * .18 = 0.214"}],
+    ["365 Everyday Value, Refrigerated Organic 100% Orange - Strawberry - Banana Juice, Calcium & Vitamin D (From Concentrate), 59 Fl Oz", {"label": "$3.99", "quantity": "7 cups", "explanation": "Carton contains 7 cups"}],
+    ["365 Everyday Value, Organic Pineapple Orange Banana Juice, 59 fl oz", {"label": "$3.99", "quantity": "7 cups", "explanation": "Carton contains 7 cups"}],
+    ["365 Everyday Value, Organic Instant Oatmeal, Maple & Brown Sugar, 11.3oz, 8 ct", {"label": "$3.69", "quantity": "12 cups", "explanation": "Each packet contains 1.5 ounces. 8 packets in a container."}],
+    ["365 Everyday Value, Organic Ancient Grains Sandwich Bread, 20 oz", {"label": "$1.85", "quantity": "9 ounces", "explanation": "Bag contains 18 slices. $3.69 / 2 = 1.845, rounded up."}],
+    ["Tastybite, Rice Basmati Organic, 8.8 Ounce", {"label": "$5.38", "quantity": "8 cups", "explanation": "Each packet contains 2 cups, which is 4oz/eq."}],
+    ["Whole Foods Market, Organic Farfalle, 16 oz", {"label": "$1.62", "quantity": "13 cups", "explanation": "Box contains 16 ounces. 13 / 16 = 0.813. $1.99 * 0.813 = $1.62"}],
+    ["365 by Whole Foods Market, Cheese Shreds, Mild Cheddar, 16 Ounce", {"label": "$5.99", "quantity": "8 cups", "explanation": "Bag contains 16 ounces. As processed cheese, this is 8 oz/eq."}],
+    ["365 Everyday Value, Mint Chocolate Chip Ice Cream, 48 oz (Frozen)", {"label": "$5.99", "quantity": "6 cups", "explanation": "Carton contains approximately 6 cups."}],
+    ["365 by Whole Foods Market, Grade A Milk, Reduced Fat, 64 Fl Oz", {"label": "$1.92", "quantity": "7 cups", "explanation": "Carton contains 8 cups. 7 / 8 = 0.875. $2.19 * 0.875 = $1.92"}],
+    ["365 Everyday Value, Wild Albacore Tuna in Water, No Salt Added, 5 oz", {"label": "$3.66", "quantity": "8 ounces", "explanation": "Can contains 5 oz. 3 / 5 = .6. $2.29 * .6 = $1.37"}],
+    ["Bell & Evans, Frozen Chicken Nuggets (Raised without Antibiotics), 12 oz", {"label": "$6.99", "quantity": "12 ounces", "explanation": "Box contains 12 ounces."}],
+    ["Earrth's Best, Meatball Baked Beef Mini, 0.87 lb", {"label": "$7.99", "quantity": "14 ounces", "explanation": "Bag contains 14 ounces."}],
+    ["365 Everyday Value, Creamy Peanut Butter, 16 oz", {"label": "$0.45", "quantity": "5 ounces", "explanation": "Jar contains 28 tbsp. 1 tbsp is 1 oz/eq. 5 / 28 = 0.18. $2.49 * 0.18 = $0.45"}],
+    ["365 Everyday Value, Extra Virgin Olive Oil, Italian, 33.8 fl oz", {label: "$0.27", quantity: "27 grams", explanation: "Bottle contains 1000g. 27 / 1000 = .027. $9.99 * .027 = 0.26973.\nRounded up."}]
+])
 
 let grocerySvg = d3.select("#grocery-breakdown")
                    .append("svg")
