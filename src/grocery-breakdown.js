@@ -2,8 +2,8 @@
 
 // set dimensions of graph
 const margin = {top: 10, right: 10, bottom: 10, left: 10},
-  width = 650 - margin.left - margin.right,
-  height = 650 - margin.top - margin.bottom;
+  width = 700 - margin.left - margin.right,
+  height = 700 - margin.top - margin.bottom;
 
 // Data is being stored in-file to simplify submission, allowing professor to view the project locally
 // Sorry it's so big and terrible.
@@ -537,24 +537,13 @@ let grocerySvg = d3.select("#grocery-breakdown")
                    .append("g")
                    .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
-
-let root = d3.hierarchy(groceryData).sum(function(d){return d.value})
-
 const groceryColor = d3.scaleOrdinal()
                        .domain(["Dark green vegetables", "Red/orange vegetables", "Legumes", "Starchy vegetables", "Other vegetables",
                                 "Fruits", "Whole grain", "Refined grain", "Oil", "Dairy", "Seafood", "Meats, poultry, eggs", "Nuts, seeds, soy products"])
                        .range(["#237C0D", "#D97C2C", "#94D92C", "#C2B038", "#C8BF87", "#E4501B", "#A16411", "#E2A757", 
                                "#E1E257", "#42BEEB", "#F1957B", "#B71408", "#E8A718"])
 
-d3.treemap()
-  .size([width, height])
-  .paddingTop(15)
-  .paddingRight(10)
-  .paddingInner(10)
-  .paddingOuter(6)
-  (root)
-
-// Tooltip and its functions
+// Tooltip -- functions are in update()
 let tooltip = d3.select("#grocery-breakdown")
                 .append("div")
                 .style("opacity", 0)
@@ -563,76 +552,113 @@ let tooltip = d3.select("#grocery-breakdown")
                 .style("border", "solid")
                 .style("border-width", "2px")
                 .style("padding", "5px")
+                .style('pointer-events', 'none')
       
-let mouseover = function(d) {
-    tooltip
-    .style("opacity", 1)
-    d3.select(this)
-    .style("stroke", "black")
-    .style("opacity", 1)
-}
+// Initialized treemap
+const treemapInit = d3.treemap()
+                  .size([width, height])
+                  .paddingTop(15)
+                  .paddingRight(10)
+                  .paddingInner(10)
+                  .paddingOuter(6)
 
-let mousemove = function(d) {
-    tooltip
-    .html("<strong>Product:</strong> " + d.data.name + "<br><strong>Quantity:</strong> " + groceryMap.get(d.data.name).quantity + "<br><strong>Why? </strong>" +
-          groceryMap.get(d.data.name).explanation)
-    .style("left", (event.pageX) + "px")
-    .style("top", (event.pageY) + "px")
-}
 
-let mouseleave = function(d) {
-    tooltip
-    .style("opacity", 0)
-    d3.select(this)
-    .style("stroke", "none")
-    .style("opacity", 0.8)
-}
+function update(data) {
 
-grocerySvg.selectAll("rect")
-   .data(root.leaves())
-   .enter()
-   .append("rect")
-   .attr('x', function(d) {return d.x0})
-   .attr('y', function(d) {return d.y0})
-   .attr('width', function(d) {return d.x1 - d.x0})
-   .attr('height', function(d) {return d.y1 - d.y0})
-   .style('stroke', 'none')
-   .style('fill', function(d){return groceryColor(d.parent.data.name)})
-   .on("mouseover", mouseover)
-   .on("mousemove", mousemove)
-   .on("mouseleave", mouseleave)
+    let actualGroceryMap
 
-grocerySvg.selectAll("text")
-   .data(root.leaves())
-   .enter()
-   .append("text")
-   .attr("x", function(d){ return d.x0+5})    
-   .attr("y", function(d){ return d.y0+20})    
-   .text(function(d){ return d.data.product })
-   .attr("font-size", "8px")
-   .attr("fill", "white")
+    if(data.name == "groceries") {
+        actualGroceryMap = groceryMap
+    }
+    else {
+        actualGroceryMap = secondGroceryMap
+    }
 
-// Labels for each group
-grocerySvg.selectAll("titles")
-          .data(root.descendants().filter(function(d){return d.depth==1}))
-          .enter()
-          .append("text")
-          .attr("x", function(d){return d.x0+5})
-          .attr("y", function(d){return d.y0})
-          .text(function(d){return d.data.name})
-          .attr("font-size", "15px")
-          .attr("fill", "black")
+    // Tooltip functions
+    let mouseover = function(d) {
+        tooltip
+        .style("opacity", 1)
+        d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1)
+    }
+    
+    let mousemove = function(d) {
+        tooltip
+        .html("<strong>Product:</strong> " + d.data.name + "<br><strong>Quantity:</strong> " + actualGroceryMap.get(d.data.name).quantity + "<br><strong>Why? </strong>" +
+              actualGroceryMap.get(d.data.name).explanation)
+        .style("left", (event.pageX) + "px")
+        .style("top", (event.pageY) + "px")
+    }
+    
+    let mouseleave = function(d) {
+        tooltip
+        .style("opacity", 0)
+        d3.select(this)
+        .style("stroke", "none")
+        .style("opacity", 0.8)
+    }
 
-// Labels for each rectangle
-grocerySvg.selectAll("vals")
-          .data(root.leaves())
-          .enter()
-          .append("text")
-          .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
+    let root = d3.hierarchy(data).sum(function(d){return d.value})
+
+    const treemap = treemapInit(root)
+
+    // Draw all of the rectangles
+    let j = grocerySvg.selectAll("rect")
+                      .data(root.leaves())
+                      .on("mouseover", mouseover)
+                      .on("mousemove", mousemove)
+                      .on("mouseleave", mouseleave)
+
+    j.enter()
+     .append("rect")
+     .merge(j)
+     .transition()
+     .duration(1000)
+     .attr('x', function(d) {return d.x0})
+     .attr('y', function(d) {return d.y0})
+     .attr('width', function(d) {return d.x1 - d.x0})
+     .attr('height', function(d) {return d.y1 - d.y0})
+     .style('stroke', 'none')
+     .style('fill', function(d){return groceryColor(d.parent.data.name)})
+
+    j.exit()
+     .remove()
+
+     // Labels for each group
+    let k = grocerySvg.selectAll(".titles")
+                      .data(root.descendants().filter(function(d) { return d.depth == 1}))
+
+    k.enter()
+     .append("text")
+     .attr('class', 'titles')
+     .merge(k)
+     .transition()
+     .duration(1000)
+     .attr("x", function(d){return d.x0+5})
+     .attr("y", function(d){return d.y0})
+     .text(function(d){return d.data.name})
+     .attr("font-size", "15px")
+     .attr("fill", "black")
+    
+    k.exit()
+     .remove()
+
+     // Labels for each rectangle
+     let u = grocerySvg.selectAll(".vals")
+                       .data(root.leaves())
+
+    u.enter()
+     .append("text")
+     .attr('class', 'vals')
+     .merge(u)
+     .transition()
+     .duration(1000)
+     .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
           .attr("y", function(d){ return d.y0+35})    // +20 to adjust position (lower)
           .text(function(d){ 
               if(d.data.value > 1) {
-                  return groceryMap.get(d.data.name).label
+                  return actualGroceryMap.get(d.data.name).label
               }
            })
           .attr("font-size", (function(d) {
@@ -644,3 +670,11 @@ grocerySvg.selectAll("vals")
               }
           }))
           .attr("fill", "white")
+
+    u.exit()
+     .remove()
+
+}
+
+// Start with the first data set
+update(groceryData)
